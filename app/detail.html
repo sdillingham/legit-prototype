@@ -40,11 +40,30 @@
                     <h2 class="event-title">Boston Marathon</h2>
                     <p class="last-updated">Last updated <time>2m ago</time></p>
                     <div class="event-stats">
-                        * Total Tweets
-                        * Last Updated
-                        * # Verified
-                        * # Falsified
-                        * # Awaiting Verification
+                        <div class="stat total">
+                            <dl>
+                                <dd>2.5k</dd>
+                                <dt>Tweets</dt>
+                            </dl>
+                        </div>
+                        <div class="stat verified">
+                            <dl>
+                                <dd>8</dd>
+                                <dt>Verified</dt>
+                            </dl>
+                        </div>
+                        <div class="stat falsified">
+                            <dl>
+                                <dd>5</dd>
+                                <dt>Falsified</dt>
+                            </dl>
+                        </div>
+                        <div class="stat unverified">
+                            <dl>
+                                <dd>8</dd>
+                                <dt>Awaiting Verification</dt>
+                            </dl>
+                        </div>
                     </div>
                     <aside class="collaborators">
                         <h6>Collaborators:</h6>
@@ -81,6 +100,7 @@
                             <dt>Sort:</dt>
                             <dd class="active"><a href="#" class="icon-calendar">Most Recent</a></dd>
                             <dd><a href="#" class="icon-retweet">Most Retweets</a></dd>
+                            <dd><a href="#" class="icon-user-group">Most Followers</a></dd>
                             <dd><a href="#" class="icon-camera">Has Media</a></dd>
                         </dl>
                     </div>
@@ -110,7 +130,7 @@
                                 </dl>
                             </aside>
                             <span class="actions-button"></span>
-                            <div class="admin-actions active">
+                            <div class="admin-actions">
                                 <a class="action verify" href="#verify"><span>Confirm</span></a>
                                 <a class="action needs-verify" href="#needs-verify"><span>Needs Verification</span></a>
                                 <a class="action falsify" href="#falsify"><span>False</span></a>

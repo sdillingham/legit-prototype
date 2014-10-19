@@ -74,6 +74,21 @@ figure {
         font-style:italic;
         font-weight:300;
     }
+    .event-stats {
+        display:flex;
+        margin-left:-6em;
+    }
+    .stat {
+        background:rgba(255,255,255,0.2);
+        display:inline-block;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -moz-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        margin-left:6em;
+        text-align:center;
+    }
     .collaborators {
         position:absolute;
         right:0;
@@ -144,15 +159,16 @@ figure {
             &:hover {
                 .actions-button {
                     @include transform(scale(1,1));
-                    width:36px;
-                    height:36px;
+                    width:48px;
+                    height:48px;
                 }
             }
             &.confirmed, &.false, &.unverified {
                 &:before {
+                    border-radius:1em;
                     color:#fff;
                     font-family: 'dripicons';
-                    font-size:1.25em;
+                    font-size:0.875em;
                     font-style: normal;
                     font-weight: normal;
                     font-variant: normal;
@@ -167,12 +183,12 @@ figure {
                     -webkit-font-smoothing: antialiased;
                     padding:4px;
                     position:absolute;
-                    right:0;
-                    top:0;
+                    right:10px;
+                    top:10px;
                     z-index:20;
                 }
                 .timestamp {
-                    right:36px;
+                    right:46px;
                 }
             } 
             &.confirmed {
@@ -284,18 +300,19 @@ figure {
                 @include transform(scale(0,0));
                 @include transition (all 0.07s linear);
                 background:#00A9FF;
-                border-radius:18px;
+                border-radius:24px;
                 color:#fff;
                 cursor:pointer;
                 position:absolute;
-                left:-18px;
-                top:4em;
-                width:36px;
-                height:36px;
+                left:-24px;
+                top:3.6em;
+                width:48px;
+                height:48px;
+                z-index:100;
                 &:before {
                     content: "\e065";
                     font-family: 'dripicons';
-                    font-size:1.25em;
+                    font-size:1.45em;
                     font-style: normal;
                     font-weight: normal;
                     font-variant: normal;
@@ -307,8 +324,13 @@ figure {
                     line-height: 1em;
                     -webkit-font-smoothing: antialiased;
                     position:absolute;
-                    left:8px;
-                    top:8px;
+                    left:12px;
+                    top:14px;
+                }
+                &.active, &.active:hover {
+                    @include transform(scale(1,1));
+                    @include transform(rotate(45deg));
+                    background:$muted;
                 }
                 &:hover {
                     background:#36BBFF;
@@ -318,12 +340,16 @@ figure {
                 }
             }
             .admin-actions {
-                display:none;
+                @include transition (all 0.07s linear);
+                @include transform(scale(0,0));
                 position:absolute;
-                left:-90px;
-                top:0;
+                left:-18px;
+                top:3.6em;
+                z-index:90;
                 &.active {
-                    display:block;
+                    @include transform(scale(1,1));
+                    left:-90px;
+                    top:0;
                 }
                 a.action {
                     border-radius:18px;
@@ -333,10 +359,21 @@ figure {
                     width:36px;
                     height:36px;
                     span {
+                        color:#000;
                         display:none;
+                        font-size:0.75em;
+                        position:absolute;
+                        bottom:-16px;
+                        left:50%;
+                        margin-left:-50px;
+                        width:100px;
+                        text-align:center;
                     }
                     &:hover {
                         border:0;
+                        span {
+                            display:block;
+                        }
                     }
                     &:before {
                         color:#fff;
@@ -361,22 +398,40 @@ figure {
                     }
                     &.verify {
                         background:$true;
+                        span {
+                            color:$true;
+                        }
                         &:before {
                             content: "\e020";
+                        }
+                        &:hover {
+                            background:lighten($true, 10%);
                         }
                     }
                     &.needs-verify {
                         background:$unverified;
                         top:64px;
+                        span {
+                            color:$unverified;
+                        }
                         &:before {
                             content: "\e072";
+                        }
+                        &:hover {
+                            background:lighten($unverified, 10%);
                         }
                     }
                     &.falsify {
                         background:$false;
                         top:128px;
+                        span {
+                            color:$false;
+                        }
                         &:before {
                             content: "\e025";
+                        }
+                        &:hover {
+                            background:lighten($false, 10%);
                         }
                     }
                 }

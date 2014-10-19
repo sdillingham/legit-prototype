@@ -1,0 +1,407 @@
+// bower:scss
+@import "../../bower_components/bourbon/app/assets/stylesheets/_bourbon.scss";
+@import "../../bower_components/dripicons/scss/dripicons.scss";
+// endbower
+
+/* VARIABLES */
+$true: #059369;
+$false: #AD0F32;
+$unverified: #E6B600;
+$muted: #AAA;
+
+body {
+    background: #f9f9f9;
+    color: #202020;
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:16px;
+    margin:0;
+    padding:0;
+}
+
+/* BASE STYLES */
+a {
+    text-decoration:none;
+    &:hover {
+        border-bottom:1px solid #0B73FF;
+        color:#0B73FF !important;
+    }
+}
+p {
+    margin:0 0 1em;
+}
+img {
+    max-width:100%;
+}
+figure {
+    margin:0;
+}
+
+/* GRID */
+.bound {
+    margin:0 auto;
+    max-width:56em;
+    position:relative;
+}
+
+/* GLOBAL HEADER */
+.header {
+    background:#fff;
+    border-bottom:1px solid #eee;
+}
+    .site-title {
+        font-size:1.5em;
+        margin:0;
+        padding:6px 0;
+        a, a:hover {
+            border-bottom:0;
+            color:#000 !important;
+        }
+    }
+
+/* DETAIL VIEW HEADER */
+.at-a-glance {
+    background:#465E7E;
+    color:#fff;
+    padding:2em;
+    .event-title {
+        font-size:3.5em;
+        line-height:1em;
+        margin:0 4em 0 0;
+    }
+    .last-updated {
+        color:#A3BAD9;
+        font-size:0.875em;
+        font-style:italic;
+        font-weight:300;
+    }
+    .collaborators {
+        position:absolute;
+        right:0;
+        top:0;
+        width:13em;
+        h6 {
+            color:#A3BAD9;
+            display:inline-block;
+            font-size:0.75em;
+            font-weight:300;
+            margin:0;
+            text-transform:uppercase;
+        }
+        ul {
+            display:inline-block;
+            list-style:none;
+            margin:0 0 0 6px;
+            padding:0;
+            vertical-align:middle;
+            li {
+                border-radius:16px;
+                display:inline-block;
+                overflow:hidden;
+                width:32px;
+                img {
+                    display:block;
+                    margin:0;
+                }
+                &.offline img {
+                    opacity:0.2;
+                }
+            }
+        }
+    }
+}
+
+/* COMPONENTS */
+.filters {
+    background:#000;
+    color:#fff;
+    margin-bottom:2em;
+    padding:1em 0;
+    .facets {
+        margin:0;
+        dt {
+            color:#A3BAD9;
+        }
+        dd, dt {
+            display:inline-block;
+            font-size:0.875em;
+            font-weight:300; 
+            text-transform:uppercase;
+            a {
+                color:#fff;
+                &:before {
+                    margin-right:6px;
+                }
+            }
+        }
+    }
+}
+.list {
+    &.tweets {
+        margin:0 10em;
+        .list-item {
+            padding-left:62px;
+            position:relative;
+            &:hover {
+                .actions-button {
+                    @include transform(scale(1,1));
+                    width:36px;
+                    height:36px;
+                }
+            }
+            &.confirmed, &.false, &.unverified {
+                &:before {
+                    color:#fff;
+                    font-family: 'dripicons';
+                    font-size:1.25em;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-variant: normal;
+                    text-transform: none !important;
+                    speak: none;
+                    display: inline-block;
+                    text-decoration: none;
+                    width: 1em;
+                    line-height: 1em;
+                    margin-right:0;
+                    vertical-align:bottom;
+                    -webkit-font-smoothing: antialiased;
+                    padding:4px;
+                    position:absolute;
+                    right:0;
+                    top:0;
+                    z-index:20;
+                }
+                .timestamp {
+                    right:36px;
+                }
+            } 
+            &.confirmed {
+                border-top:3px solid $true;
+                &:before {
+                    background:$true;
+                    content: "\e020";
+                }
+            }
+            &.false {
+                border-top:3px solid $false;
+                &:before {
+                    background:$false;
+                    content: "\e025";
+                }
+            }
+            &.unverified {
+                border-top:3px solid $unverified;
+                &:before {
+                    background:$unverified;
+                    content: "\e072";
+                }
+            }
+            header {
+                margin-bottom:1.5em;
+            }
+            .avatar {
+                position:absolute;
+                left:10px;
+                top:10px;
+                width:42px;
+            }
+            .username {
+                font-size:1em;
+                line-height:1em;
+                margin:0;
+            }
+            .handle {
+                color:$muted;
+                font-size:0.875em;
+                font-weight:300;
+                margin-bottom:0;
+            }
+            .timestamp {
+                color:$muted;
+                font-weight:300;
+                position:absolute;
+                right:10px;
+                top:10px;
+            }
+            .tweet-media {
+                margin-bottom:1em;
+            }
+            .tweet-text {
+                font-size:1.125em;
+            }
+            .tweet-engagement {
+                border-top:1px solid #eee;
+                margin-top:1.5em;
+                dl {
+                    margin:0.2em 0 0;
+                    dd, dt {
+                        color:$muted;
+                        display:inline-block;
+                        font-size:0.75em;
+                        font-weight:300;
+                    }
+                    dt a {
+                        color:$muted;
+                    }
+                    dd {
+                        color:#999;
+                        font-weight:600;
+                        &:first-child {
+                            margin-left:0;
+                        }
+                        &:before {
+                            font-family: 'dripicons';
+                            font-size:1.25em;
+                            font-style: normal;
+                            font-weight: normal;
+                            font-variant: normal;
+                            text-transform: none !important;
+                            speak: none;
+                            display: inline-block;
+                            text-decoration: none;
+                            width: 1em;
+                            line-height: 1em;
+                            margin-right:6px;
+                            vertical-align:bottom;
+                            -webkit-font-smoothing: antialiased;
+                        }
+                        &.followers:before {
+                            content: "\e082";
+                        }
+                        &.favorites:before {
+                            content: "\e040";
+                        }
+                        &.retweets:before {
+                            content: "\e076";
+                        }
+                        &.link:before {
+                            content: "\e081";
+                        }
+                    }
+                }
+            }
+            .actions-button {
+                @include transform(scale(0,0));
+                @include transition (all 0.07s linear);
+                background:#00A9FF;
+                border-radius:18px;
+                color:#fff;
+                cursor:pointer;
+                position:absolute;
+                left:-18px;
+                top:4em;
+                width:36px;
+                height:36px;
+                &:before {
+                    content: "\e065";
+                    font-family: 'dripicons';
+                    font-size:1.25em;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-variant: normal;
+                    text-transform: none !important;
+                    speak: none;
+                    display: inline-block;
+                    text-decoration: none;
+                    width: 1em;
+                    line-height: 1em;
+                    -webkit-font-smoothing: antialiased;
+                    position:absolute;
+                    left:8px;
+                    top:8px;
+                }
+                &:hover {
+                    background:#36BBFF;
+                }
+                &:active {
+                    background:#0085C8;
+                }
+            }
+            .admin-actions {
+                display:none;
+                position:absolute;
+                left:-90px;
+                top:0;
+                &.active {
+                    display:block;
+                }
+                a.action {
+                    border-radius:18px;
+                    color:#fff;
+                    cursor:pointer;
+                    position:absolute;
+                    width:36px;
+                    height:36px;
+                    span {
+                        display:none;
+                    }
+                    &:hover {
+                        border:0;
+                    }
+                    &:before {
+                        color:#fff;
+                        font-family: 'dripicons';
+                        font-size:1.25em;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-variant: normal;
+                        text-transform: none !important;
+                        speak: none;
+                        display: inline-block;
+                        text-decoration: none;
+                        width: 1em;
+                        line-height: 1em;
+                        margin-right:0;
+                        vertical-align:bottom;
+                        -webkit-font-smoothing: antialiased;
+                        padding:8px;
+                        position:absolute;
+                        right:0;
+                        top:0;
+                    }
+                    &.verify {
+                        background:$true;
+                        &:before {
+                            content: "\e020";
+                        }
+                    }
+                    &.needs-verify {
+                        background:$unverified;
+                        top:64px;
+                        &:before {
+                            content: "\e072";
+                        }
+                    }
+                    &.falsify {
+                        background:$false;
+                        top:128px;
+                        &:before {
+                            content: "\e025";
+                        }
+                    }
+                }
+            }
+            .comment {
+                display:none;
+            }
+        }
+    }
+}
+    .list-item {
+        @include box-shadow(0 2px 3px 0 rgba(0, 0, 0, 0.2));
+        background:#fff;
+        margin-bottom:1em;
+        padding:10px;
+        position:relative;
+    }
+
+
+/* MEDIA QUERIES */
+@media (max-width:46em) {
+    .bound {
+        padding:0 1em;
+    }
+    .list.tweets  {
+        margin:0;
+    }
+}
